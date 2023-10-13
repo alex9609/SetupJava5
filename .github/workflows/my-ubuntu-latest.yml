@@ -1,0 +1,45 @@
+name: Ubuntu Latest
+description: Github Actios to set up Ubuntu Latest
+author: Alex Rodriguez
+
+inputs:
+    java_home:
+        description:
+            required: true
+            type: string
+    ant_home:
+        description: The path to the ant home directory
+        required: true
+        type: string
+steps:
+    - name: Install Java 5
+        run: |
+        sudo mkdir ${{ inputs.java_home }}
+        sudo cp jdk-1_5_0_12-linux-amd64.bin ${{ inputs.java_home }}/jdk-1_5_0_12-linux-amd64.bin
+        sudo chmod a+x ${{ inputs.java_home }}/jdk-1_5_0_12-linux-amd64.bin
+        sudo chown -R root:root ${{ inputs.java_home }}
+        echo "Print folder"
+        ls -la ${{ inputs.java_home }}
+        cd ${{ inputs.java_home }}
+        sudo echo "yes" | sudo ./jdk-1_5_0_12-linux-amd64.bin
+
+        sudo update-alternatives --install "/usr/bin/java" "java" ${{ inputs.java_home }}/bin/java 1
+        sudo update-alternatives --install "/usr/bin/javac" "javac" ${{ inputs.java_home }}/bin/javac 1
+
+        sudo update-alternatives --set java ${{ inputs.java_home }}/bin/java
+        sudo update-alternatives --set javac ${{ inputs.java_home }}/bin/javac
+
+        sudo chmod a+x /usr/bin/java
+        sudo chmod a+x /usr/bin/javac
+
+        sudo chown -R root:root ${{ inputs.java_home }}
+        echo $JAVA_HOME
+        export JAVA_HOME=${{ inputs.java_home }}
+        echo $JAVA_HOME
+        echo $PATH
+        export PATH=$JAVA_HOME/bin:$PATH
+        echo "PATH changed"
+        echo $PATH
+        echo "java version"
+        java -version
+        echo Done on `date`
