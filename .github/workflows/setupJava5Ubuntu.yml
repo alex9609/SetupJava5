@@ -22,7 +22,6 @@ jobs:
            ls -la
            cd ${{ github.workspace }}/.github
            ls -la
-           cd ./.github
 
       - name: Alistando ambiente
-        uses: ./.github/workflows/actions/setup-composite@master
+        uses: ./.github/workflows/actions/setup-composite@main
