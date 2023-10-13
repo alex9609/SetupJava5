@@ -18,22 +18,4 @@ jobs:
           clean: false # This is required to keep the build files
 
       - name: Alistando ambiente
-        uses: ./.github/workflows/cache-deps
-      - name: Revisando Java 5
-        run: |
-          echo Running new install java 5
-          echo Started on `date`
-          echo "Print folder"
-          echo $JAVA_HOME
-          echo $JAVA_HOME
-          echo $PATH
-          echo "PATH changed"
-          echo $PATH
-          echo "java version"
-          echo Done on `date`
-
-      - name: Revisnando instalacion
-        run: | # Install Ant, specifict version that supports Java 5
-          echo $PATH
-          echo "PATH changed"
-          echo $PATH
+        uses: ./.github/workflows/actions/setup-composite
