@@ -17,11 +17,12 @@ jobs:
         with:
           clean: false # This is required to keep the build files
 
-      - name: Listando carpetas
-        run: |
-           ls -la
-           cd ${{ github.workspace }}/.github
-           ls -la
-
       - name: Alistando ambiente
         uses: ./.github/actions
+
+      - name: Comprobando instalacion
+        run: |
+         cd /usr/lib/jvm/java5/
+         ls -la
+         cd /usr/lib/jvm/
+         ls -la
