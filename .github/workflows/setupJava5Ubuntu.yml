@@ -19,6 +19,8 @@ jobs:
 
       - name: Alistando ambiente
         uses: ./.github/actions
+        with:
+            path-java: 'jdk-1_5_0_12-linux-amd64.bin'
 
       - name: Comprobando instalacion
         run: |
