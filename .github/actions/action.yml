@@ -3,6 +3,9 @@ description: 'Install Java 5 & Ant'
 runs:
   using: 'composite'
   steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Install Java 5
       run: |
         echo Running install java 5
