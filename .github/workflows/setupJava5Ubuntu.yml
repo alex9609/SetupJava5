@@ -1,10 +1,5 @@
-name: Alistamiento ambiente
+name: Compilacion ambiente
 
-env:
-  JAVA_TOOL_OPTIONS: -Dfile.encoding=iso-8859-1 -Xms256m -Xmx800m -XX:MaxPermSize=200m -Djava.net.preferIPv4Stack=true -Duser.timezone=America/Bogota -Xms512m -Xmx768m -Xss256k -XX:MaxPermSize=256M -XX:+ShowMessageBoxOnError -Djava_home=/usr/lib/jvm/java5/jdk1.5.0_12
-  ANT_OPTS: -Dfile.encoding=iso-8859-1 -Djava_home=/usr/lib/jvm/java5/jdk1.5.0_12
-  JAVA_HOME: /usr/lib/jvm/java5/jdk1.5.0_12
-  JAVACMD: /usr/lib/jvm/java5/jdk1.5.0_12/bin/java
 on: [push]
 
 permissions:
@@ -22,49 +17,23 @@ jobs:
         with:
           clean: false # This is required to keep the build files
 
-      - name: Install Java 5
+      - name: Alistando ambiente
+        uses:  ./.github/workflows/example1.yml
+      - name: Revisando Java 5
         run: |
-          echo Running install java 5
+          echo Running new install java 5
           echo Started on `date`
-          sudo mkdir /usr/lib/jvm/java5
-          sudo cp jdk-1_5_0_12-linux-amd64.bin /usr/lib/jvm/java5/jdk-1_5_0_12-linux-amd64.bin
-          sudo chmod a+x /usr/lib/jvm/java5/jdk-1_5_0_12-linux-amd64.bin
-          sudo chown -R root:root /usr/lib/jvm/java5/
           echo "Print folder"
-          ls -la /usr/lib/jvm/
-          cd /usr/lib/jvm/java5/
-          sudo echo "yes" | sudo ./jdk-1_5_0_12-linux-amd64.bin
-
-          sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/java5/jdk1.5.0_12/bin/java" 1
-          sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/java5/jdk1.5.0_12/bin/javac" 1
-
-          sudo update-alternatives --set java /usr/lib/jvm/java5/jdk1.5.0_12/bin/java
-          sudo update-alternatives --set javac /usr/lib/jvm/java5/jdk1.5.0_12/bin/javac
-
-          sudo chmod a+x /usr/bin/java
-          sudo chmod a+x /usr/bin/javac
-
-          sudo chown -R root:root /usr/lib/jvm/java5/
           echo $JAVA_HOME
-          export JAVA_HOME=/usr/lib/jvm/java5/jdk1.5.0_12
           echo $JAVA_HOME
           echo $PATH
-          export PATH=$JAVA_HOME/bin:$PATH
           echo "PATH changed"
           echo $PATH
           echo "java version"
-          java -version
           echo Done on `date`
 
-      - name: Install Ant
+      - name: Revisnando instalacion
         run: | # Install Ant, specifict version that supports Java 5
-          sudo apt remove ant -y
-          sudo mkdir /opt/ant
-          sudo tar -xvf apache-ant-1.7.1-bin.tar.gz -C /opt/ant
-          sudo update-alternatives --install "/usr/bin/ant" "ant" "/opt/ant/apache-ant-1.7.1/bin/ant" 1
-          sudo update-alternatives --set ant /opt/ant/apache-ant-1.7.1/bin/ant
-          export ANT_HOME=/opt/ant/apache-ant-1.7.1
           echo $PATH
-          export PATH=$ANT_HOME/bin:$PATH
           echo "PATH changed"
           echo $PATH
