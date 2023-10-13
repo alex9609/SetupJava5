@@ -36,6 +36,7 @@ runs:
         echo "java version"
         java -version
         echo Done on `date`
+      shell: bash
 
     - name: Install Ant
       run: | # Install Ant, specifict version that supports Java 5
@@ -49,4 +50,5 @@ runs:
         export PATH=$ANT_HOME/bin:$PATH
         echo "PATH changed"
         echo $PATH
+      shell: bash
 
