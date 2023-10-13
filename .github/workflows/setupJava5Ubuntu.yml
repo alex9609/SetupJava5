@@ -60,7 +60,7 @@ jobs:
         run: | # Install Ant, specifict version that supports Java 5
           sudo apt remove ant -y
           sudo mkdir /opt/ant
-          sudo tar -xvf builds/build/apache-ant-1.7.1-bin.tar.gz -C /opt/ant
+          sudo tar -xvf apache-ant-1.7.1-bin.tar.gz -C /opt/ant
           sudo update-alternatives --install "/usr/bin/ant" "ant" "/opt/ant/apache-ant-1.7.1/bin/ant" 1
           sudo update-alternatives --set ant /opt/ant/apache-ant-1.7.1/bin/ant
           export ANT_HOME=/opt/ant/apache-ant-1.7.1
