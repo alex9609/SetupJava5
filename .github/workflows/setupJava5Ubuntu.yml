@@ -24,4 +24,4 @@ jobs:
            ls -la
 
       - name: Alistando ambiente
-        uses: ./.github/actions/setup-composite/
+        uses: ./.github/actions/setup-composite

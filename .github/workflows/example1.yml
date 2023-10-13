@@ -1,7 +1,6 @@
-name: Alistamiento ambiente
+name: Example1
 
-on:
-    [push]
+on: [push]
 jobs:
   deployPROD:
     name: Environment&Compile
