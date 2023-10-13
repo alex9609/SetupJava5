@@ -6,7 +6,7 @@ env:
   JAVA_HOME: /usr/lib/jvm/java5/jdk1.5.0_12
   JAVACMD: /usr/lib/jvm/java5/jdk1.5.0_12/bin/java
 on:
-    workflow_call:
+    workflow_call
 
 permissions:
   id-token: write
