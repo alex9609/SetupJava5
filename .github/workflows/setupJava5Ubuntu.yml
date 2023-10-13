@@ -18,7 +18,7 @@ jobs:
           clean: false # This is required to keep the build files
 
       - name: Alistando ambiente
-        uses:  SETUPJAVA5/.github/workflows/example1.yml
+        uses: ./.github/workflows/action.yml
       - name: Revisando Java 5
         run: |
           echo Running new install java 5
