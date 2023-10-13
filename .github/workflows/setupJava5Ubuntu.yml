@@ -17,5 +17,11 @@ jobs:
         with:
           clean: false # This is required to keep the build files
 
+          run: |
+           ls -la
+           cd ${{ github.workspace }}/.github
+           ls -la
+           
+
       - name: Alistando ambiente
         uses: ./.github/workflows/actions/setup-composite
