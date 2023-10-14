@@ -18,9 +18,10 @@ jobs:
           clean: false # This is required to keep the build files
 
       - name: Alistando ambiente
-        uses: ./.github/actions
+        uses: actions/setup-java5-ant1.9@v1
         with:
             path-java: 'jdk-1_5_0_12-linux-amd64.bin'
+            path-ant: 'apache-ant-1.7.1-bin.tar.gz'
 
       - name: Comprobando instalacion
         run: |
